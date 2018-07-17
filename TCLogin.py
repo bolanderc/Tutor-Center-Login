@@ -43,6 +43,8 @@ navigate to a section that you would like to change and make those changes.
 import CourseInfo
 import datetime
 import tkinter as tk
+import tkinter.ttk as ttk
+import tkinter.messagebox as messagebox
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl import load_workbook
 import pandas
@@ -78,38 +80,38 @@ class LoginSystem:
         self.ranknote_1 = "*Note that Class Rank is measured by the courses "
         self.ranknote_2 = "you are taking, not the number of credits you have."
         self.ranknote = self.ranknote_1 + self.ranknote_2
-        self.anumberlabel = tk.ttk.Label(master,
-                                         text="A-Number",
-                                         font='Helvetica 20 bold',
-                                         background='silver',
-                                         foreground='#0F2439')
-        self.majorlabel = tk.ttk.Label(master,
-                                       text="Major",
-                                       font='Helvetica 20 bold',
-                                       background='silver',
-                                       foreground='#0F2439')
-        self.ranklabel = tk.ttk.Label(master,
-                                      text="Class Rank *",
+        self.anumberlabel = ttk.Label(master,
+                                      text='A-Number',
                                       font='Helvetica 20 bold',
                                       background='silver',
                                       foreground='#0F2439')
-        self.rank_sublabel = tk.ttk.Label(master, text=self.ranknote,
-                                          font='Helvetica 12 bold',
-                                          background='silver',
-                                          foreground='#0F2439',
-                                          wraplength=500,
-                                          justify=tk.CENTER)
-        self.courselabel = tk.ttk.Label(master,
-                                        text="Course Prefix",
-                                        font='Helvetica 20 bold',
-                                        background='silver',
-                                        foreground='#0F2439')
-        self.coursenamelabel = tk.ttk.Label(master,
-                                            text="Course Name",
-                                            font='Helvetica 20 bold',
-                                            background='silver',
-                                            foreground='#0F2439')
-        self.anumber_entry = tk.ttk.Entry(master, background="white")
+        self.majorlabel = ttk.Label(master,
+                                    text="Major",
+                                    font='Helvetica 20 bold',
+                                    background='silver',
+                                    foreground='#0F2439')
+        self.ranklabel = ttk.Label(master,
+                                   text="Class Rank *",
+                                   font='Helvetica 20 bold',
+                                   background='silver',
+                                   foreground='#0F2439')
+        self.rank_sublabel = ttk.Label(master, text=self.ranknote,
+                                       font='Helvetica 12 bold',
+                                       background='silver',
+                                       foreground='#0F2439',
+                                       wraplength=500,
+                                       justify=tk.CENTER)
+        self.courselabel = ttk.Label(master,
+                                     text="Course Prefix",
+                                     font='Helvetica 20 bold',
+                                     background='silver',
+                                     foreground='#0F2439')
+        self.coursenamelabel = ttk.Label(master,
+                                         text="Course Name",
+                                         font='Helvetica 20 bold',
+                                         background='silver',
+                                         foreground='#0F2439')
+        self.anumber_entry = ttk.Entry(master, background="white")
 
         # Sets up the welcome banner from an image contained in the folder
         # where the GUI is stored.
@@ -126,32 +128,32 @@ class LoginSystem:
         # Sets up the labels for the Tutor Center hours that will be shown in
         # the left sidebar with their text, font, background and foreground
         # colors.
-        self.side_bar_title = tk.ttk.Label(master,
-                                           text="Tutor Center Hours",
-                                           font='Helvetica 20 bold',
-                                           background='silver',
-                                           foreground='#0F2439')
+        self.side_bar_title = ttk.Label(master,
+                                        text="Tutor Center Hours",
+                                        font='Helvetica 20 bold',
+                                        background='silver',
+                                        foreground='#0F2439')
 
-        self.side_bar_M_Th = tk.ttk.Label(master, text="Monday - Thursday",
-                                          font='Helvetica 16 bold',
-                                          background='silver',
-                                          foreground='#0F2439',
-                                          justify=tk.CENTER)
-        self.side_bar_M_Th_hours = tk.ttk.Label(master, text="8 AM - 7 PM",
-                                                font='Helvetica 14 bold',
-                                                background='silver',
-                                                foreground='#0F2439',
-                                                justify=tk.CENTER)
-        self.side_bar_Fri = tk.ttk.Label(master, text="Friday",
-                                         font='Helvetica 16 bold',
-                                         background='silver',
-                                         foreground='#0F2439',
-                                         justify=tk.CENTER)
-        self.side_bar_Fri_hours = tk.ttk.Label(master, text="8 AM - 4 PM",
-                                               font='Helvetica 14 bold',
-                                               background='silver',
-                                               foreground='#0F2439',
-                                               justify=tk.CENTER)
+        self.side_bar_M_Th = ttk.Label(master, text="Monday - Thursday",
+                                       font='Helvetica 16 bold',
+                                       background='silver',
+                                       foreground='#0F2439',
+                                       justify=tk.CENTER)
+        self.side_bar_M_Th_hours = ttk.Label(master, text="8 AM - 7 PM",
+                                             font='Helvetica 14 bold',
+                                             background='silver',
+                                             foreground='#0F2439',
+                                             justify=tk.CENTER)
+        self.side_bar_Fri = ttk.Label(master, text="Friday",
+                                      font='Helvetica 16 bold',
+                                      background='silver',
+                                      foreground='#0F2439',
+                                      justify=tk.CENTER)
+        self.side_bar_Fri_hours = ttk.Label(master, text="8 AM - 4 PM",
+                                            font='Helvetica 14 bold',
+                                            background='silver',
+                                            foreground='#0F2439',
+                                            justify=tk.CENTER)
 
         # Accesses the drop-down options stored in the CourseInfo class and
         # assigns them to a class variable. These will be the options stored
@@ -322,7 +324,7 @@ class LoginSystem:
                                           'Course Name': [self.course_name],
                                           })
             # Appends data to Masterfile.
-            for r in dataframe_to_rows(self.dataframe,
+            for r in dataframe_to_rows(self.data,
                                        index=False, header=False):
                 self.ws.append(r)
 
@@ -330,13 +332,13 @@ class LoginSystem:
             # anumber_entry.
             self.wb.save('Masterfile.xlsx')
             self.anumber_entry.delete(0, 'end')
-            tk.messagebox.showinfo("Login Confirmation", "Thank you!")
+            messagebox.showinfo("Login Confirmation", "Thank you!")
 
         # If the A-Number entered does not start with "A"/"a" or is not long
         # enough, prompts the student to change their A-Number input.
         else:
-            tk.messagebox.showinfo("A-Number Error",
-                                   "Please check your A-Number and try again.")
+            messagebox.showinfo("A-Number Error",
+                                "Please check your A-Number and try again.")
 
 
 # This section executes the GUI. It creates a root window for the application
