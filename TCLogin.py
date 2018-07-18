@@ -9,25 +9,6 @@ Routine Listings
 -----------------
 LoginSystem     Class housing the login system GUI (graphical user interface).
 
-See Also
------------
-CourseInfo.py : Module containing the class for storing courses
-
-tkinter.Entry : Creates a widget for string entry
-tkinter.Label : Creates a label widget
-tkinter.messagebox : Creates a messagebox widget to display text after an event
-tkinter.OptionMenu : Creates a pre-configured option menu
-tkinter.PhotoImage : Imports an image to be used in a widget
-tkinter.StringVar : Creates a string variable to be used in a widget
-
-datetime.datetime.now : Returns date information
-
-openpyxl.load_workbook : Loads Excel workbook for use in saving data
-openpyxl.utils.datafram.dataframe_to_rows : Takes a dataframe and places it in
-                                            a row on a spreadsheet
-
-pandas.DataFrame : Creates a dataframe (like a dictionary) for storing data
-
 Notes
 ------
 This module is for running the Engineering Tutor Center Login System. Most of
@@ -37,10 +18,14 @@ to the future needs of the Tutor Center. There are in-line comments throughout
 the script that describe what each chunk of code does, so it should be easy to
 navigate to a section that you would like to change and make those changes.
 
+***IMPORTANT: Please verify all changes with the Tutor Center Supervisor before
+they are made.
+
+To run the login system, simply run this script!
+
 """
-# Importing `CourseInfo` will work as long as the class is named "CourseInfo"
-# and is in the same directory as this program.
-import CourseInfo
+
+import CourseInfo  # CourseInfo.py must be in the same directory as this script
 import datetime
 import tkinter as tk
 import tkinter.ttk as ttk
@@ -59,10 +44,97 @@ class LoginSystem:
     following the instructions contained therein. If the need arises to change
     this system, the following documentation should allow such changes to be
     easily made.
+
+    The __init__ constructor will run each time an instance of the class is
+    created. It sets up the GUI initially, and relies on the `name_change` and
+    `record_data` methods for modifications to the original setup. These
+    methods affect `name_menu` and the final data output respectively.
+
+    Attributes
+    ------------
+    anumber_entry : tkinter.ttk.Entry
+        Widget for taking a user entry for A number.
+    anumberlabel : tkinter.ttk.Label
+        Widget for holding the label for A-number.
+    courselabel : tkinter.ttk.Label
+        Widget for holding the label for course prefix.
+    coursenamelabel : tkinter.ttk.Label
+        Widget for holding the label for course name.
+    courses
+    friday_label : tkinter.ttk.Label
+        Widget for holding a label explaining the Friday hours of the Tutor
+        Center.
+    majorlabel : tkinter.ttk.Label
+        Widget for holding the label for major.
+    major_menu : tkinter.OptionMenu
+        An option menu containing all of the majors in `major_options`.
+    major_options : CourseInfo
+        Holds all of the options available to choose a major.
+    major_selection : tkinter.StringVar
+        Contains the selected major from `major_menu`.
+    majorvar : tkinter.StringVar
+        A variable that changes every time a new major is selected from
+        `major_menu`.
+    name_menu : tkinter.OptionMenu
+        An option menu containing all of the course prefixes in `name_options`.
+    name_options : CourseInfo
+        Holds all of the options available to choose course name.
+    name_selection : tkinter.StringVar
+        Contains the selected course name from `name_menu`.
+    namevar : tkinter.StringVar
+        A variable that changes every time a new course name is selected from
+        `name_menu`.
+    prefix_menu : tkinter.OptionMenu
+        An option menu containing all of the course prefixes in
+        `prefix_options`.
+    prefix_options : CourseInfo
+        Holds all of the options available to choose course prefix.
+    prefix_selection : tkinter.StringVar
+        Contains the selected course prefix from `prefix_menu`.
+    prefixvar : tkinter.StringVar
+        A variable that changes every time a new course prefix is selected from
+        `prefix_menu`.
+    ranklabel : tkinter.ttk.Label
+        Widget for holding the label for class rank.
+    rank_menu : tkinter.OptionMenu
+        An option menu containing all of the class ranks in `rank_options`.
+    ranknote : string
+        Text to be placed at the bottom of the page as a note for class rank.
+    rank_options : CourseInfo
+        Holds all of the options available to choose class rank.
+    rank_selection : tkinter.StringVar
+        Contains the selected class rank from `rank_menu`.
+    rank_sublabel : tkinter.ttk.Label
+        Widget for holding a label at the bottom of the page with a note about
+        class rank.
+    rankvar : tkinter.StringVar
+        A variable that changes every time a new class rank is selected from
+        `rank_menu`.
+    record_button : tkinter.Button
+        Widget that creates a button to record the data input by the student.
+    side_bar_title : tkinter.ttk.Label
+        Widget for holding a label for the Tutor Center hours in the sidebar.
+    weekday_label : tkinter.ttk.Label
+        Widget for holding a label explaining the Monday-Thursday hours of the
+        Tutor Center.
+    weekend_label : tkinter.ttk.Label
+        Widget for holding a label explaining the Saturday-Sunday hours of the
+        Tutor Center.
+
+    See Also
+    -----------
+    CourseInfo.py : Module containing the class for storing courses
+
+    tkinter.Entry : Creates a widget for string entry
+    tkinter.Label : Creates a label widget
+    tkinter.OptionMenu : Creates a pre-configured option menu
+    tkinter.PhotoImage : Imports an image to be used in a widget
+    tkinter.StringVar : Creates a string variable to be used in a widget
+
+    tkinter.ttk : Allows for more creative changes to tkinter widgets
+
     """
 
-    # The __init__ function will run each time an instance of LoginSystem is
-    # created (see the bottom of this script).
     def __init__(self, master):
         # Sets up the root window of the GUI with a title, the proper size,
         # a background color and a logo. Also defines an instance of the
@@ -73,45 +145,7 @@ class LoginSystem:
                         root.winfo_screenheight()))
         master.configure(background="silver")
         master.iconbitmap('Logo.ico')
-        self.Courses = CourseInfo.CourseInfo()
-
-        # Defines all main data labels with their text, font, background
-        # and letter colors. The foreground color is USU blue in hexidecimal.
-        self.ranknote_1 = "*Note that Class Rank is measured by the courses "
-        self.ranknote_2 = "you are taking, not the number of credits you have."
-        self.ranknote = self.ranknote_1 + self.ranknote_2
-        self.anumberlabel = ttk.Label(master,
-                                      text='A-Number',
-                                      font='Helvetica 20 bold',
-                                      background='silver',
-                                      foreground='#0F2439')
-        self.majorlabel = ttk.Label(master,
-                                    text="Major",
-                                    font='Helvetica 20 bold',
-                                    background='silver',
-                                    foreground='#0F2439')
-        self.ranklabel = ttk.Label(master,
-                                   text="Class Rank *",
-                                   font='Helvetica 20 bold',
-                                   background='silver',
-                                   foreground='#0F2439')
-        self.rank_sublabel = ttk.Label(master, text=self.ranknote,
-                                       font='Helvetica 12 bold',
-                                       background='silver',
-                                       foreground='#0F2439',
-                                       wraplength=500,
-                                       justify=tk.CENTER)
-        self.courselabel = ttk.Label(master,
-                                     text="Course Prefix",
-                                     font='Helvetica 20 bold',
-                                     background='silver',
-                                     foreground='#0F2439')
-        self.coursenamelabel = ttk.Label(master,
-                                         text="Course Name",
-                                         font='Helvetica 20 bold',
-                                         background='silver',
-                                         foreground='#0F2439')
-        self.anumber_entry = ttk.Entry(master, background="white")
+        self.courses = CourseInfo.CourseInfo()
 
         # Sets up the welcome banner from an image contained in the folder
         # where the GUI is stored.
@@ -125,6 +159,52 @@ class LoginSystem:
         # it if the GUI is opened again.
         self.welcomelabel.image = self.welcome_image
 
+        # Defines all main data labels with their text, font, background
+        # and letter colors. The foreground color is USU blue in hexidecimal.
+        self.anumberlabel = ttk.Label(master,
+                                      text='A-Number',
+                                      font='Helvetica 20 bold',
+                                      background='silver',
+                                      foreground='#0F2439')
+        self.anumber_entry = ttk.Entry(master, background="white")
+        self.majorlabel = ttk.Label(master,
+                                    text="Major",
+                                    font='Helvetica 20 bold',
+                                    background='silver',
+                                    foreground='#0F2439')
+        self.ranklabel = ttk.Label(master,
+                                   text="Class Rank *",
+                                   font='Helvetica 20 bold',
+                                   background='silver',
+                                   foreground='#0F2439')
+        self.courselabel = ttk.Label(master,
+                                     text="Course Prefix",
+                                     font='Helvetica 20 bold',
+                                     background='silver',
+                                     foreground='#0F2439')
+        self.coursenamelabel = ttk.Label(master,
+                                         text="Course Name",
+                                         font='Helvetica 20 bold',
+                                         background='silver',
+                                         foreground='#0F2439')
+        self.ranknote = ("*Note that Class Rank is measured by the courses you"
+                         " are taking, not the number of credits you have.")
+        self.rank_sublabel = ttk.Label(master, text=self.ranknote,
+                                       font='Helvetica 12 bold',
+                                       background='silver',
+                                       foreground='#0F2439',
+                                       wraplength=500,
+                                       justify=tk.CENTER)
+
+        # Creates a button that will be used by the student to record their
+        # information and sign in to the Tutor Center. The `record_data` method
+        # will be run everytime this button is pressed.
+        self.record_button = tk.Button(master, text="Sign In",
+                                       font="Helvetica 16 bold",
+                                       background="#0F2439",
+                                       foreground="white",
+                                       command=self.record_data)
+
         # Sets up the labels for the Tutor Center hours that will be shown in
         # the left sidebar with their text, font, background and foreground
         # colors.
@@ -134,106 +214,106 @@ class LoginSystem:
                                         background='silver',
                                         foreground='#0F2439')
 
-        self.side_bar_M_Th = ttk.Label(master, text="Monday - Thursday",
-                                       font='Helvetica 16 bold',
+        self.weekday_label = ttk.Label(master, text=("Monday - Thursday\n"
+                                                     "8 AM - 7 PM"),
+                                       font='Helvetica 14 bold',
                                        background='silver',
                                        foreground='#0F2439',
                                        justify=tk.CENTER)
-        self.side_bar_M_Th_hours = ttk.Label(master, text="8 AM - 7 PM",
-                                             font='Helvetica 14 bold',
-                                             background='silver',
-                                             foreground='#0F2439',
-                                             justify=tk.CENTER)
-        self.side_bar_Fri = ttk.Label(master, text="Friday",
-                                      font='Helvetica 16 bold',
+        self.friday_label = ttk.Label(master, text="Friday\n8 AM - 4 PM",
+                                      font='Helvetica 14 bold',
                                       background='silver',
                                       foreground='#0F2439',
                                       justify=tk.CENTER)
-        self.side_bar_Fri_hours = ttk.Label(master, text="8 AM - 4 PM",
-                                            font='Helvetica 14 bold',
-                                            background='silver',
-                                            foreground='#0F2439',
-                                            justify=tk.CENTER)
+        self.weekend_label = ttk.Label(master, text="Closed Saturday & Sunday",
+                                       font='Helvetica 12 bold',
+                                       background='silver',
+                                       foreground='#0F2439',
+                                       justify=tk.CENTER)
 
         # Accesses the drop-down options stored in the CourseInfo class and
         # assigns them to a class variable. These will be the options stored
         # in the drop-down buttons created later.
-        self.majoroptions = self.Courses.majoroptions
-        self.rankoptions = self.Courses.rankoptions
-        self.prefixoptions = self.Courses.prefixoptions
+        self.major_options = self.courses.majoroptions
+        self.rank_options = self.courses.rankoptions
+        self.prefix_options = self.courses.prefixoptions
 
         # Major Selection Menu:
         # The majorvar variable is used for tracking the student's selection
         # of their major based on the major menu.
         self.majorvar = tk.StringVar(root)
-        self.majorvar.set(self.majoroptions[0])  # Sets a default major.
+        self.majorvar.set(self.major_options[0])  # Sets a default major.
 
         # major_menu is the button that the student will interact with to
         # select their major. major_selection stores the value the student
         # chooses for their major.
         self.major_menu = tk.OptionMenu(master, self.majorvar,
-                                        *self.majoroptions)
+                                        *self.major_options)
         self.major_selection = self.majorvar.get()
-        self.major_menu.config(bg="white", highlightthickness=0)
+        self.major_menu.config(bg="white", font='Helvetica 12',
+                               foreground="#0F2439",
+                               highlightthickness=0)
         self.major_menu["menu"].config(bg="white")
 
         # Class Rank Selection Menu:
         # The rankvar variable is used for tracking the student's selection
         # of their class rank based on the class rank menu.
         self.rankvar = tk.StringVar(master)
-        self.rankvar.set(self.rankoptions[0])  # Sets a default class rank.
+        self.rankvar.set(self.rank_options[0])  # Sets a default class rank.
 
         # rank_menu is the button that the student will interact with to
         # select their class rank. rank_selection stores the value the student
         # chooses for their class rank.
-        self.rank_menu = tk.OptionMenu(master, self.rankvar, *self.rankoptions)
+        self.rank_menu = tk.OptionMenu(master, self.rankvar,
+                                       *self.rank_options)
         self.rank_selection = self.rankvar.get()
-        self.rank_menu.config(bg="white", highlightthickness=0)
+        self.rank_menu.config(bg="white", font='Helvetica 12',
+                              foreground="#0F2439",
+                              highlightthickness=0)
         self.rank_menu["menu"].config(bg="white")
 
         # Course Prefix Selection Menu:
         # The prefixvar variable is used for tracking the student's selection
         # of their course prefix based on the course prefix menu.
         self.prefixvar = tk.StringVar(master)
-        self.prefixvar.set(self.prefixoptions[0])  # Sets a default.
+        self.prefixvar.set(self.prefix_options[0])  # Sets a default.
 
         # prefix_menu is the button that the student will interact with to
         # select their course prefix. prefix_selection stores the value the
         # student chooses for their course prefix.
         self.prefix_menu = tk.OptionMenu(master, self.prefixvar,
-                                         *self.prefixoptions)
+                                         *self.prefix_options)
         self.prefix_selection = self.prefixvar.get()
-        self.prefix_menu.config(bg="white", highlightthickness=0)
+        self.prefix_menu.config(bg="white", font='Helvetica 12',
+                                foreground="#0F2439",
+                                highlightthickness=0)
         self.prefix_menu["menu"].config(bg="white")
 
         # Used to populate name_menu with the correct options, based on the
         # course prefix. Links the chosen prefix to the list of possible
         # courses using that prefix.
-        self.prefix = self.Courses.populate_names(self.prefix_selection)
+        self.name_options = self.courses.populate_names(self.prefix_selection)
 
         # Course Name Selection Menu:
         # The namevar variable is used for tracking the student's selection
         # of their course name based on the course name menu.
         self.namevar = tk.StringVar(master)
-        self.namevar.set(self.prefix[0])
+        self.namevar.set(self.name_options[0])
 
         # name_menu is the button that the student will interact with to
         # select their course name. name_selection stores the value the
         # student chooses for their course name.
-        self.name_menu = tk.OptionMenu(master, self.namevar, *self.prefix)
-        self.name_menu.config(bg="white", highlightthickness=0)
+        self.name_menu = tk.OptionMenu(master, self.namevar,
+                                       *self.name_options)
+        self.name_menu.config(bg="white", font='Helvetica 12',
+                              foreground="#0F2439",
+                              highlightthickness=0)
         self.name_menu["menu"].config(bg="white")
         # A trace for prefixvar is set up here. This trace employs the method
         # `name_change` everytime a new value is written (selected by the
         # student, hence the "w" for write) to prefixvar.
         self.prefixvar.trace("w", self.name_change)
         self.name_selection = self.namevar.get()
-
-        # Creates a button that will be used by the student to record their
-        # information and sign in to the Tutor Center. The `record_data` method
-        # will be run everytime this button is pressed.
-        self.record_button = tk.Button(master, text="Sign In",
-                                       command=self.record_data)
 
         # Creates an 8x5 grid in which to place each of the labels, buttons,
         # etc.
@@ -248,41 +328,74 @@ class LoginSystem:
         self.side_bar_title.grid(row=1, column=0)
         self.anumberlabel.grid(row=1, column=1)
         self.anumber_entry.grid(row=1, column=2)
-        self.side_bar_M_Th.grid(row=2, column=0)
+        self.weekday_label.grid(row=2, column=0)
         self.majorlabel.grid(row=2, column=1)
         self.major_menu.grid(row=2, column=2)
-        self.side_bar_M_Th_hours.grid(row=3, column=0)
+        self.friday_label.grid(row=3, column=0)
         self.ranklabel.grid(row=3, column=1)
         self.rank_menu.grid(row=3, column=2)
-        self.side_bar_Fri.grid(row=4, column=0)
+        self.weekend_label.grid(row=4, column=0)
         self.courselabel.grid(row=4, column=1)
         self.prefix_menu.grid(row=4, column=2)
-        self.side_bar_Fri_hours.grid(row=5, column=0)
         self.coursenamelabel.grid(row=5, column=1)
         self.name_menu.grid(row=5, column=2)
         self.rank_sublabel.grid(row=6, column=1)
         self.record_button.grid(row=6, column=2)
 
-    # The name_change method is used to re-populate the `name_menu` with the
-    # proper courses from CourseInfo when the `prefix_menu` changes.
     def name_change(self, *args):
-        # The selected prefix is retrieved from `prefixvar` and a new set of
-        # course names is populated and replaces the values in `name_menu`.
+        """Changes the list of options in `name_menu` based on user input.
+
+        The selected prefix is retrieved from `prefixvar` and a new set of
+        course names is populated and replaces the values in `name_menu`.
+
+        Returns
+        -------
+        name_menu : tkinter.OptionMenu
+            Option menu with the course names corresponding to a selected
+            course prefix.
+
+        See Also
+        --------
+        CourseInfo.py
+
+        """
+
         self.prefix_chosen = self.prefixvar.get()
-        self.new_names = self.Courses.populate_names(self.prefix_chosen)
+        self.new_names = self.courses.populate_names(self.prefix_chosen)
         self.namevar.set(self.new_names[0])
+        # Deletes previous options in name_menu ...
         self.name_menu['menu'].delete(0, 'end')
+        # ... and replaces them with the options in `new_names`.
         for names in self.new_names:
             self.name_menu['menu'].add_command(label=names,
                                                command=tk._setit(self.namevar,
                                                                  names))
         return self.name_menu
 
-    # This method records the information that is input by the student and
-    # saves it in the Masterfile.xlsx Excel spreadsheet. This spreadsheet must
-    # be located in the same directory as this script. Please refer to the
-    # documentation for the spreadsheet for questions of upkeep.
     def record_data(self):
+        """Records data input by user into the GUI.
+
+        This method records the information that is input by the student and
+        saves it in the Masterfile.xlsx Excel spreadsheet. This spreadsheet
+        must be located in the same directory as this script. Please refer to
+        the documentation for the spreadsheet for questions of upkeep.
+
+        See Also
+        --------
+        tkinter.messagebox : Creates a messagebox widget to display text after
+                             an event
+
+        datetime.datetime : Returns time and date information.
+
+        openpyxl.load_workbook : Loads Excel workbook for use in saving data
+        openpyxl.utils.datafram.dataframe_to_rows : Takes a dataframe and
+                                                    places it in a row on a
+                                                    spreadsheet.
+
+        pandas.DataFrame : Creates a dataframe (like a dictionary) for storing
+                           data.
+        """
+
         # Checks if A-number input is correct by checking the string length and
         # that the A-number field starts wth "A" or "a".
         self.a_get = self.anumber_entry.get()
