@@ -128,6 +128,107 @@ class CourseInfo:
                      "STAT"
                      ]
 
+    # This contains all of the BENG-prefixed courses.
+    BENGoptions = [
+        "BENG 1000: Intro to Undergraduate Research",
+        "BENG 1880: Quantitative Biological Systems",
+        "BENG 2300: Properties of Biomaterials",
+        "BENG 2400: Thermodynamics",
+        "BENG 3200: Intro to Unit Operations",
+        "BENG 3500: Fluid Mechanics",
+        "BENG 3870: Biol. Engr. Design 1",
+        "BENG 3000: Instrumentation for Biol. Sys.",
+        "BENG 3670: Transport Phenomena",
+        "BENG 4880: Biol. Engr. Design 2",
+        "BENG 4890: Biol. Engr. Design 3",
+        "BENG 4250: Cooperative Practice"
+    ]
+    BENGoptions = sorted(BENGoptions)  # Sorts by course number.
+
+    # This contains all of the BIOL-prefixed courses.
+    BIOLoptions = [
+        "BIOL 1610: Biology 1",
+        "BIOL 3300: General Microbiology",
+        "BIOL 3060: Principles of Genetics",
+        "BIOL 1620: Biology 2",
+        "BIOL 2320: Human Anatomy",
+        "BIOL 2420: Human Physiology",
+        "BIOL 3060: Principles of Genetics"
+        "BIOL 3100: Bioethics"
+    ]
+    BIOLoptions = sorted(BIOLoptions)  # Sorts by course number.
+
+    # This contains all of the CEE-prefixed courses.
+    CEEoptions = [
+        "CEE 1880: CEE Orientation",
+        "CEE 2240: Engineering Surveying",
+        "CEE 3160: Civil Engineering Materials",
+        "CEE 3500: Fluid Mechanics",
+        "CEE 3610: Environmental Management",
+        "CEE 4200: Engineering Economics",
+        "CEE 3020: Structural Analysis"
+        "CEE 3510: Engineering Hydraulics",
+        "CEE 3880: Civil and Env. Engr. Design 1",
+        "CEE 4870: Civil and Env. Engr. Design 2",
+        "CEE 4880: Civil and Env. Engr. Design 3",
+        "CEE 3020: Structural Analysis",
+        "CEE 5060: Mechanics of Composite Materials 1",
+        "CEE 2620: Microbiology",
+        "CEE 3780: Hazardous Waste Management",
+        "CEE 3420: Engineering Hydrology",
+        "CEE 3640: Drinking Water Engineering",
+        "CEE 3650: Wastewater Engineering",
+        "CEE 3670: Transport Phenomena in Bio-Environmental Systems"
+    ]
+    CEEoptions = sorted(CEEoptions)  # Sorts by course number.
+
+    # This contains all of the CHEM-prefixed courses.
+    CHEMoptions = [
+                   "CHEM 1210: Principles of Chemistry 1",
+                   "CHEM 2300: Organic Chemistry 1",
+                   "CHEM 3700: Introductory Biochemistry",
+                   "CHEM 1220: Principles of Chemistry 2",
+                   "CHEM 2320: Organic Chemistry 2",
+                   "CHEM 3070: Physical Chemistry",
+                   "CHEM 3650: Environmental Chemistry"
+                   ]
+    CHEMoptions = sorted(CHEMoptions)  # Sorts by course number.
+
+    # This contains all of the CS-prefixed courses.
+    CSoptions = [
+        "CS 1400: Computer Science 1",
+        "CS 1410: Computer Science 2",
+        "CS 2420: Computer Science 3",
+        "CS 3100: Operating Systems",
+        "CS 1440: Methods in Comp. Sci.",
+        "CS 2420: Algorithms & Data Structures",
+        "CS 2410: Intro to Event Prog. & GUIs",
+        "CS 2610: Developing Web App",
+        "CS 2810: Comp. Sys. Organization",
+        "CS 3450: Intro to Software Engineering",
+        "CS 4700: Programming Languages"
+    ]
+    CSoptions = sorted(CSoptions)  # Sorts by course number.
+
+    # This contains all of the ECE-prefixed courses.
+    ECEoptions = [
+        "ECE 2700: Digital Circuits",
+        "ECE 2250: Electrical Circuits 1",
+        "ECE 2290: Electrical Circuits 2",
+        "ECE 3620: Continuous Time Systems",
+        "ECE 3710: Microcontrollers",
+        "ECE 3410: Microelectronics 1"
+        "ECE 3810: Engineering Professionalism",
+        "ECE 4820: Computer Engr. Design 1",
+        "ECE 4830: Engineering Comm. 1",
+        "ECE 4840: Computer Engr. Design 2",
+        "ECE 4700: Engineering Comm. 2",
+        "ECE 3620: Continuous-Time Sys. & Sig.",
+        "ECE 3640: Discrete-Time Sys. & Sig.",
+        "ECE 3870: Electromagnetics 1"
+    ]
+    ECEoptions = sorted(ECEoptions)  # Sorts by course number.
+
     # This contains all of the ENGR-prefixed courses.
     ENGRoptions = [
                    "ENGR 2010: Statics",
@@ -139,6 +240,12 @@ class CourseInfo:
                    "ENGR 3080: Technical Communication"
                    ]
     ENGRoptions = sorted(ENGRoptions)  # Sorts by course number.
+
+    # This contains all of the GEOL-prefixed courses.
+    GEOLoptions = [
+        "GEOL 1110: Physical Geology"
+    ]
+    GEOLoptions = sorted(GEOLoptions)  # Sorts by course number.
 
     # This contains all of the MAE-prefixed courses.
     MAEoptions = [
@@ -178,18 +285,6 @@ class CourseInfo:
                   ]
     MAEoptions = sorted(MAEoptions)  # Sorts by course number.
 
-    # This contains all of the CHEM-prefixed courses.
-    CHEMoptions = [
-                   "CHEM 1210: Principles of Chemistry 1",
-                   "CHEM 2300: Organic Chemistry 1",
-                   "CHEM 3700: Introductory Biochemistry",
-                   "CHEM 1220: Principles of Chemistry 2",
-                   "CHEM 2320: Organic Chemistry 2",
-                   "CHEM 3070: Physical Chemistry",
-                   "CHEM 3650: Environmental Chemistry"
-                   ]
-    CHEMoptions = sorted(CHEMoptions)  # Sorts by course number.
-
     # This contains all of the MATH-prefixed courses.
     MATHoptions = [
                    "MATH 1050: College Algebra",
@@ -204,6 +299,12 @@ class CourseInfo:
                    ]
     MATHoptions = sorted(MATHoptions)  # Sorts by course number.
 
+    # This contains all of the MGT-prefixed courses.
+    MGToptions = [
+        "MGT 3110: Managing Organizations"
+    ]
+    MGToptions = sorted(MGToptions)  # Sorts by course number.
+
     # This contains all of the PHYS-prefixed courses.
     PHYSoptions = [
         "PHYS 2210: Physics 1",
@@ -212,51 +313,11 @@ class CourseInfo:
     ]
     PHYSoptions = sorted(PHYSoptions)  # Sorts by course number.
 
-    # This contains all of the CS-prefixed courses.
-    CSoptions = [
-        "CS 1400: Computer Science 1",
-        "CS 1410: Computer Science 2",
-        "CS 2420: Computer Science 3",
-        "CS 3100: Operating Systems",
-        "CS 1440: Methods in Comp. Sci.",
-        "CS 2420: Algorithms & Data Structures",
-        "CS 2410: Intro to Event Prog. & GUIs",
-        "CS 2610: Developing Web App",
-        "CS 2810: Comp. Sys. Organization",
-        "CS 3450: Intro to Software Engineering",
-        "CS 4700: Programming Languages"
+    # This contains all of the PSC-prefixed courses.
+    PSCoptions = [
+        "PSC 3000: Fundamentals of Soil Science"
     ]
-    CSoptions = sorted(CSoptions)  # Sorts by course number.
-
-    # This contains all of the BENG-prefixed courses.
-    BENGoptions = [
-        "BENG 1000: Intro to Undergraduate Research",
-        "BENG 1880: Quantitative Biological Systems",
-        "BENG 2300: Properties of Biomaterials",
-        "BENG 2400: Thermodynamics",
-        "BENG 3200: Intro to Unit Operations",
-        "BENG 3500: Fluid Mechanics",
-        "BENG 3870: Biol. Engr. Design 1",
-        "BENG 3000: Instrumentation for Biol. Sys.",
-        "BENG 3670: Transport Phenomena",
-        "BENG 4880: Biol. Engr. Design 2",
-        "BENG 4890: Biol. Engr. Design 3",
-        "BENG 4250: Cooperative Practice"
-    ]
-    BENGoptions = sorted(BENGoptions)  # Sorts by course number.
-
-    # This contains all of the BIOL-prefixed courses.
-    BIOLoptions = [
-        "BIOL 1610: Biology 1",
-        "BIOL 3300: General Microbiology",
-        "BIOL 3060: Principles of Genetics",
-        "BIOL 1620: Biology 2",
-        "BIOL 2320: Human Anatomy",
-        "BIOL 2420: Human Physiology",
-        "BIOL 3060: Principles of Genetics"
-        "BIOL 3100: Bioethics"
-    ]
-    BIOLoptions = sorted(BIOLoptions)  # Sorts by course number.
+    PSCoptions = sorted(PSCoptions)  # Sorts by course number.
 
     # This contains all of the STAT-prefixed courses.
     STAToptions = [
@@ -264,67 +325,6 @@ class CourseInfo:
         "STAT 5200: Design of Experiments"
     ]
     STAToptions = sorted(STAToptions)  # Sorts by course number.
-
-    # This contains all of the CEE-prefixed courses.
-    CEEoptions = [
-        "CEE 1880: CEE Orientation",
-        "CEE 2240: Engineering Surveying",
-        "CEE 3160: Civil Engineering Materials",
-        "CEE 3500: Fluid Mechanics",
-        "CEE 3610: Environmental Management",
-        "CEE 4200: Engineering Economics",
-        "CEE 3020: Structural Analysis"
-        "CEE 3510: Engineering Hydraulics",
-        "CEE 3880: Civil and Env. Engr. Design 1",
-        "CEE 4870: Civil and Env. Engr. Design 2",
-        "CEE 4880: Civil and Env. Engr. Design 3",
-        "CEE 3020: Structural Analysis",
-        "CEE 5060: Mechanics of Composite Materials 1",
-        "CEE 2620: Microbiology",
-        "CEE 3780: Hazardous Waste Management",
-        "CEE 3420: Engineering Hydrology",
-        "CEE 3640: Drinking Water Engineering",
-        "CEE 3650: Wastewater Engineering",
-        "CEE 3670: Transport Phenomena in Bio-Environmental Systems"
-    ]
-    CEEoptions = sorted(CEEoptions)  # Sorts by course number.
-
-    # This contains all of the GEOL-prefixed courses.
-    GEOLoptions = [
-        "GEOL 1110: Physical Geology"
-    ]
-    GEOLoptions = sorted(GEOLoptions)  # Sorts by course number.
-
-    # This contains all of the ECE-prefixed courses.
-    ECEoptions = [
-        "ECE 2700: Digital Circuits",
-        "ECE 2250: Electrical Circuits 1",
-        "ECE 2290: Electrical Circuits 2",
-        "ECE 3620: Continuous Time Systems",
-        "ECE 3710: Microcontrollers",
-        "ECE 3410: Microelectronics 1"
-        "ECE 3810: Engineering Professionalism",
-        "ECE 4820: Computer Engr. Design 1",
-        "ECE 4830: Engineering Comm. 1",
-        "ECE 4840: Computer Engr. Design 2",
-        "ECE 4700: Engineering Comm. 2",
-        "ECE 3620: Continuous-Time Sys. & Sig.",
-        "ECE 3640: Discrete-Time Sys. & Sig.",
-        "ECE 3870: Electromagnetics 1"
-    ]
-    ECEoptions = sorted(ECEoptions)  # Sorts by course number.
-
-    # This contains all of the PSC-prefixed courses.
-    PSCoptions = [
-        "PSC 3000: Fundamentals of Soil Science"
-    ]
-    PSCoptions = sorted(PSCoptions)  # Sorts by course number.
-
-    # This contains all of the MGT-prefixed courses.
-    MGToptions = [
-        "MGT 3110: Managing Organizations"
-    ]
-    MGToptions = sorted(MGToptions)  # Sorts by course number.
 
     # This populates the prefix menu based on the prefix selection.
     #
@@ -355,34 +355,34 @@ class CourseInfo:
             prefix.
 
         """
-        if prefix_selection == "ENGR":
-            course_names = CourseInfo.ENGRoptions
-        elif prefix_selection == "MAE":
-            course_names = CourseInfo.MAEoptions
-        elif prefix_selection == "CHEM":
-            course_names = CourseInfo.CHEMoptions
-        elif prefix_selection == "MATH":
-            course_names = CourseInfo.MATHoptions
-        elif prefix_selection == "PHYS":
-            course_names = CourseInfo.PHYSoptions
-        elif prefix_selection == "CS":
-            course_names = CourseInfo.CSoptions
-        elif prefix_selection == "BENG":
+        if prefix_selection == "BENG":
             course_names = CourseInfo.BENGoptions
         elif prefix_selection == "BIOL":
             course_names = CourseInfo.BIOLoptions
-        elif prefix_selection == "STAT":
-            course_names = CourseInfo.STAToptions
         elif prefix_selection == "CEE":
             course_names = CourseInfo.CEEoptions
-        elif prefix_selection == "GEOL":
-            course_names = CourseInfo.GEOLoptions
+        elif prefix_selection == "CHEM":
+            course_names = CourseInfo.CHEMoptions
+        elif prefix_selection == "CS":
+            course_names = CourseInfo.CSoptions
         elif prefix_selection == "ECE":
             course_names = CourseInfo.ECEoptions
-        elif prefix_selection == "PSC":
-            course_names = CourseInfo.PSCoptions
+        elif prefix_selection == "ENGR":
+            course_names = CourseInfo.ENGRoptions
+        elif prefix_selection == "GEOL":
+            course_names = CourseInfo.GEOLoptions
+        elif prefix_selection == "MAE":
+            course_names = CourseInfo.MAEoptions
+        elif prefix_selection == "MATH":
+            course_names = CourseInfo.MATHoptions
         elif prefix_selection == "MGT":
             course_names = CourseInfo.MGToptions
+        elif prefix_selection == "PHYS":
+            course_names = CourseInfo.PHYSoptions
+        elif prefix_selection == "PSC":
+            course_names = CourseInfo.PSCoptions
+        elif prefix_selection == "STAT":
+            course_names = CourseInfo.STAToptions
         # Additional entries should look like so...
     #   elif prefix_selection == "NewPrefixHere":
     #       prefix = CourseInfo.PREoptions
