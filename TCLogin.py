@@ -123,15 +123,15 @@ class LoginSystem:
 
     See Also
     -----------
-    CourseInfo.py : Module containing the class for storing courses
+    CourseInfo.py : Module containing the class for storing course information.
 
-    tkinter.Entry : Creates a widget for string entry
-    tkinter.Label : Creates a label widget
-    tkinter.OptionMenu : Creates a pre-configured option menu
-    tkinter.PhotoImage : Imports an image to be used in a widget
-    tkinter.StringVar : Creates a string variable to be used in a widget
+    tkinter.Entry : Creates a widget for string entry.
+    tkinter.Label : Creates a label widget.
+    tkinter.OptionMenu : Creates a pre-configured option menu.
+    tkinter.PhotoImage : Imports an image to be used in a widget.
+    tkinter.StringVar : Creates a string variable to be used in a widget.
 
-    tkinter.ttk : Allows for more creative changes to tkinter widgets
+    tkinter.ttk : Allows for more creative changes to tkinter widgets.
 
     """
 

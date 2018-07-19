@@ -1,15 +1,89 @@
-""" 
-This file contains the information about the various classes in the Tutor Center.
-If you wish to add to this list, type in the new value in the proper location (i.e. majors, class prefixes, etc.),
-making sure that your entry is in double quotes and seperated from the other options by a comma.
-Also make sure that you enter your new item between the [ ].
-Some sections have additional steps that must be followed when adding a new value. See the individual section below
-for those steps.
+# -*- coding: utf-8 -*-
+"""The stored information accessible in the Tutor Center login system.
+
+This file contains the information accessible to the Tutor Center login system
+(TCLogin.py), including major, class rank, course prefix, and course name
+lists. This class is considered a living document, and should be updated as
+needed to meet the needs of the Tutor Center.
+
+Notes
+------
+If you wish to add to any list, add the new value to the corresponding
+location (i.e. `majoroptions`, `rankoptions`, etc.), making sure that the entry
+is in double quotes and seperated from the other options by a comma and a
+newline. Also make sure that you enter your new item between the [ ].
+Some sections have additional steps that must be followed when adding a new
+value. These sections are the `prefixoptions` attribute and the
+`populate_names` method. See the in-line comments preceding those sections for
+more information.
+
+CoE => College of Engineering
 """
 
 
 class CourseInfo:
-    # This list of available majors.
+    """CourseInfo contains information used by the Tutor Center login system.
+
+    This class contains information on the majors, class ranks, course
+    prefixes, and course names available to students in the USU College of
+    Engineering (CoE). This class is accessed to provide options for this
+    information for the students using the Tutor Center login system.
+
+    Attributes
+    ------------
+    majoroptions : list of str
+        Contains all of the possible choices of major in the CoE.
+    rankoptions : list of str
+        Contains all of the possible choices of class rank.
+    prefixoptions : list of str
+        Contains all of the possible choices for course prefix.
+    ENGRoptions : list of str
+        Contains all of the ENGR-prefix courses.
+    MAEoptions : list of str
+        Contains all of the MAE-prefix courses.
+    CHEMoptions : list of str
+        Contains all of the CHEM-prefix courses.
+    MATHoptions : list of str
+        Contains all of the MATH-prefix courses.
+    PHYSoptions : list of str
+        Contains all of the PHYS-prefix courses.
+    CSoptions : list of str
+        Contains all of the CS-prefix courses.
+    BENGoptions : list of str
+        Contains all of the BENG-prefix courses.
+    BIOLoptions : list of str
+        Contains all of the BIOL-prefix courses.
+    STAToptions : list of str
+        Contains all of the STAT-prefix courses.
+    CEEoptions : list of str
+        Contains all of the CEE-prefix courses.
+    GEOLoptions : list of str
+        Contains all of the GEOL-prefix courses.
+    ECEoptions : list of str
+        Contains all of the ECE-prefix courses.
+    PSCoptions : list of str
+        Contains all of the PSC-prefix courses.
+    MGToptions : list of str
+        Contains all of the MGT-prefix courses.
+
+    See Also
+    -----------
+    TCLogin.py
+    numpy.sort : Sorts a list alphanumerically.
+
+    Notes
+    -------
+    Note that all of the options presented here are directly from the 2018-2019
+    course list for each of the majors in the CoE.
+
+    References
+    -----------
+    Degree maps containing many of the courses listed in the "options" lists.
+    http://catalog.usu.edu//content.php?navoid=3927&catoid=12
+
+    """
+
+    # This is a list of available majors.
     majoroptions = [
                     "BIEN",
                     "CIEN",
@@ -32,9 +106,11 @@ class CourseInfo:
                    ]
 
     # This is a list of course prefixes.
-    # THIS SECTION HAS ADDITIONAL STEPS WHEN ADDING A NEW ITEM!
-    # When adding a new item to this list, you need to add another else statement to the populate_names method, below.
-    # See that section for how to do that.
+    # ADDING A NEW ITEM:
+    # -------------------
+    # When adding a new item to this list, you need to add another `else`
+    # statement to the `populate_names` method. See that section for
+    # further instructions.
     prefixoptions = [
                      "BENG",
                      "BIOL",
@@ -52,47 +128,6 @@ class CourseInfo:
                      "STAT"
                      ]
 
-    # This populates the prefix menu based on the prefix selection.
-    # ADDING A NEW ITEM:
-    # Copy the following two lines into the list, above the "else" line: (delete the # in the new lines after copying)
-        #elif prefix_selection == "NewPrefixHere":
-            #prefix = CourseInfo.PREoptions
-    # Change the "NewPrefixHere" and "PREoptions" to match the new prefix that you added above and below.
-    @staticmethod
-    def populate_names(prefix_selection):
-        if prefix_selection == "ENGR":
-            prefix = CourseInfo.ENGRoptions
-        elif prefix_selection == "MAE":
-            prefix = CourseInfo.MAEoptions
-        elif prefix_selection == "CHEM":
-            prefix = CourseInfo.CHEMoptions
-        elif prefix_selection == "MATH":
-            prefix = CourseInfo.MATHoptions
-        elif prefix_selection == "PHYS":
-            prefix = CourseInfo.PHYSoptions
-        elif prefix_selection == "CS":
-            prefix = CourseInfo.CSoptions
-        elif prefix_selection == "BENG":
-            prefix = CourseInfo.BENGoptions
-        elif prefix_selection == "BIOL":
-            prefix = CourseInfo.BIOLoptions
-        elif prefix_selection == "STAT":
-            prefix = CourseInfo.STAToptions
-        elif prefix_selection == "CEE":
-            prefix = CourseInfo.CEEoptions
-        elif prefix_selection == "GEOL":
-            prefix = CourseInfo.GEOLoptions
-        elif prefix_selection == "ECE":
-            prefix = CourseInfo.ECEoptions
-        elif prefix_selection == "PSC":
-            prefix = CourseInfo.PSCoptions
-        elif prefix_selection == "MGT":
-            prefix = CourseInfo.MGToptions
-        else: # This should only be reachable if the course prefixes are updated without changing this function.
-            prefix = CourseInfo.ENGRoptions # defaults the prefix to ENGR
-            print("You need to update the populate_names function!") # Prints out a message warning about the problem.
-        return prefix
-
     # This contains all of the ENGR-prefixed courses.
     ENGRoptions = [
                    "ENGR 2010: Statics",
@@ -103,8 +138,8 @@ class CourseInfo:
                    "ENGR 2450: Numerical Methods",
                    "ENGR 3080: Technical Communication"
                    ]
-    ENGRoptions = sorted(ENGRoptions) # Sorts by course number.
-    
+    ENGRoptions = sorted(ENGRoptions)  # Sorts by course number.
+
     # This contains all of the MAE-prefixed courses.
     MAEoptions = [
                   "MAE 1010: Intro to Mechanical Engineering",
@@ -141,7 +176,7 @@ class CourseInfo:
                   "MAE 5580: Aircraft Design",
                   "MAE 5670: Fracture Mechanics"
                   ]
-    MAEoptions = sorted(MAEoptions) # Sorts by course number.
+    MAEoptions = sorted(MAEoptions)  # Sorts by course number.
 
     # This contains all of the CHEM-prefixed courses.
     CHEMoptions = [
@@ -153,7 +188,7 @@ class CourseInfo:
                    "CHEM 3070: Physical Chemistry",
                    "CHEM 3650: Environmental Chemistry"
                    ]
-    CHEMoptions = sorted(CHEMoptions) # Sorts by course number.
+    CHEMoptions = sorted(CHEMoptions)  # Sorts by course number.
 
     # This contains all of the MATH-prefixed courses.
     MATHoptions = [
@@ -167,7 +202,7 @@ class CourseInfo:
                    "MATH 2270: Linear Algebra",
                    "MATH 2280: Differential Equations"
                    ]
-    MATHoptions = sorted(MATHoptions) # Sorts by course number.
+    MATHoptions = sorted(MATHoptions)  # Sorts by course number.
 
     # This contains all of the PHYS-prefixed courses.
     PHYSoptions = [
@@ -175,7 +210,7 @@ class CourseInfo:
         "PHYS 2220: Physics 2",
         "PHYS 2710: Introductory Modern Physics"
     ]
-    PHYSoptions = sorted(PHYSoptions) # Sorts by course number.
+    PHYSoptions = sorted(PHYSoptions)  # Sorts by course number.
 
     # This contains all of the CS-prefixed courses.
     CSoptions = [
@@ -191,7 +226,7 @@ class CourseInfo:
         "CS 3450: Intro to Software Engineering",
         "CS 4700: Programming Languages"
     ]
-    CSoptions = sorted(CSoptions) # Sorts by course number.
+    CSoptions = sorted(CSoptions)  # Sorts by course number.
 
     # This contains all of the BENG-prefixed courses.
     BENGoptions = [
@@ -208,7 +243,7 @@ class CourseInfo:
         "BENG 4890: Biol. Engr. Design 3",
         "BENG 4250: Cooperative Practice"
     ]
-    BENGoptions = sorted(BENGoptions) # Sorts by course number.
+    BENGoptions = sorted(BENGoptions)  # Sorts by course number.
 
     # This contains all of the BIOL-prefixed courses.
     BIOLoptions = [
@@ -221,14 +256,14 @@ class CourseInfo:
         "BIOL 3060: Principles of Genetics"
         "BIOL 3100: Bioethics"
     ]
-    BIOLoptions = sorted(BIOLoptions) # Sorts by course number.
+    BIOLoptions = sorted(BIOLoptions)  # Sorts by course number.
 
     # This contains all of the STAT-prefixed courses.
     STAToptions = [
         "STAT 3000: Statistics for Scientists",
         "STAT 5200: Design of Experiments"
     ]
-    STAToptions = sorted(STAToptions) # Sorts by course number.
+    STAToptions = sorted(STAToptions)  # Sorts by course number.
 
     # This contains all of the CEE-prefixed courses.
     CEEoptions = [
@@ -252,13 +287,13 @@ class CourseInfo:
         "CEE 3650: Wastewater Engineering",
         "CEE 3670: Transport Phenomena in Bio-Environmental Systems"
     ]
-    CEEoptions = sorted(CEEoptions) # Sorts by course number.
+    CEEoptions = sorted(CEEoptions)  # Sorts by course number.
 
     # This contains all of the GEOL-prefixed courses.
     GEOLoptions = [
         "GEOL 1110: Physical Geology"
     ]
-    GEOLoptions = sorted(GEOLoptions) # Sorts by course number.
+    GEOLoptions = sorted(GEOLoptions)  # Sorts by course number.
 
     # This contains all of the ECE-prefixed courses.
     ECEoptions = [
@@ -277,16 +312,87 @@ class CourseInfo:
         "ECE 3640: Discrete-Time Sys. & Sig.",
         "ECE 3870: Electromagnetics 1"
     ]
-    ECEoptions = sorted(ECEoptions) # Sorts by course number.
+    ECEoptions = sorted(ECEoptions)  # Sorts by course number.
 
     # This contains all of the PSC-prefixed courses.
     PSCoptions = [
         "PSC 3000: Fundamentals of Soil Science"
     ]
-    PSCoptions = sorted(PSCoptions) # Sorts by course number.
+    PSCoptions = sorted(PSCoptions)  # Sorts by course number.
 
     # This contains all of the MGT-prefixed courses.
     MGToptions = [
         "MGT 3110: Managing Organizations"
     ]
-    MGToptions = sorted(MGToptions) # Sorts by course number.
+    MGToptions = sorted(MGToptions)  # Sorts by course number.
+
+    # This populates the prefix menu based on the prefix selection.
+    #
+    # ADDING A NEW ITEM:
+    # -------------------
+    # Copy the following two lines into the list, above the "else" line:
+    # (delete the # in the new lines after copying)
+    #   elif prefix_selection == "NewPrefixHere":
+    #       prefix = CourseInfo.PREoptions
+    # Change the "NewPrefixHere" and "PREoptions" to match the new prefix that
+    # you added above and below.
+    @staticmethod
+    def populate_names(prefix_selection):
+        """Changes the list of options in `name_menu` based on user input.
+
+        The selected prefix is retrieved from `prefixvar` and a new set of
+        course names is populated and replaces the values in `name_menu`.
+
+        Parameters
+        ------------
+        prefix_selection : tkinter.StringVar
+            The prefix selected by the student in the login system.
+
+        Returns
+        -------
+        course_names : list of str
+            Contains a list of all of the names corresponding to the selected
+            prefix.
+
+        """
+        if prefix_selection == "ENGR":
+            course_names = CourseInfo.ENGRoptions
+        elif prefix_selection == "MAE":
+            course_names = CourseInfo.MAEoptions
+        elif prefix_selection == "CHEM":
+            course_names = CourseInfo.CHEMoptions
+        elif prefix_selection == "MATH":
+            course_names = CourseInfo.MATHoptions
+        elif prefix_selection == "PHYS":
+            course_names = CourseInfo.PHYSoptions
+        elif prefix_selection == "CS":
+            course_names = CourseInfo.CSoptions
+        elif prefix_selection == "BENG":
+            course_names = CourseInfo.BENGoptions
+        elif prefix_selection == "BIOL":
+            course_names = CourseInfo.BIOLoptions
+        elif prefix_selection == "STAT":
+            course_names = CourseInfo.STAToptions
+        elif prefix_selection == "CEE":
+            course_names = CourseInfo.CEEoptions
+        elif prefix_selection == "GEOL":
+            course_names = CourseInfo.GEOLoptions
+        elif prefix_selection == "ECE":
+            course_names = CourseInfo.ECEoptions
+        elif prefix_selection == "PSC":
+            course_names = CourseInfo.PSCoptions
+        elif prefix_selection == "MGT":
+            course_names = CourseInfo.MGToptions
+        # Additional entries should look like so...
+    #   elif prefix_selection == "NewPrefixHere":
+    #       prefix = CourseInfo.PREoptions
+        # This `else` statement should only be reachable if the course prefixes
+        # are updated without making the necessary additions to this method.
+        else:
+            # Sets the list of course names to those corresponding to the ENGR
+            # prefix and prints an error statement reminding the user to
+            # update the proper functions in CourseInfo.py.
+            course_names = CourseInfo.ENGRoptions
+            print("You need to update the populate_names function in "
+                  "CourseInfo.py.")
+        return course_names
