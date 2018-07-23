@@ -416,10 +416,10 @@ class LoginSystem:
             # Loads the Masterfile spreadsheet and selects the active sheet to
             # record the student's data.
             self.wb = load_workbook('Masterfile.xlsx')
-            self.ws = self.wb.active
+            self.ws = self.wb["Main Data"]
 
             # Gets all of the data given by the student, saves it as a pandas
-            # dataframe (dictionary), and then adds the values to the
+            # dataframe (dictionary_like), and then adds the values to the
             # current worksheet in Masterfile.xlsx.
             self.a_number = self.anumber_entry.get()
             self.major = self.majorvar.get()
@@ -435,7 +435,10 @@ class LoginSystem:
                                           'Course Prefix':
                                               [self.course_prefix],
                                           'Course Name': [self.course_name],
-                                          })
+                                          }, columns=['Anumber', 'Class Rank',
+                                                      'Major', 'Course Prefix',
+                                                      'Course Name', 'Date',
+                                                      'Day', 'Time In'])
             # Appends data to Masterfile.
             for r in dataframe_to_rows(self.data,
                                        index=False, header=False):
